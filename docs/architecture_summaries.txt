@@ -1,0 +1,113 @@
+Agent Architecture Implementation Summary
+Below is a summary of how each agent architecture was implemented in the Harkaam framework:
+1. OODA (Observe, Orient, Decide, Act)
+Implementation Overview:
+
+Follows the military-inspired decision cycle with four distinct phases
+Maintains a cyclical process that repeats until task completion
+Strong focus on gathering and analyzing information before making decisions
+
+Key Components:
+
+Observe: Gathers information about the task and environment
+Orient: Analyzes the information and forms a mental model
+Decide: Makes a decision based on the mental model
+Act: Executes the decision (often using tools)
+
+Use Cases:
+
+Dynamic environments requiring constant reassessment
+Tasks with changing conditions or requirements
+Situations where situational awareness is critical
+
+2. BDI (Belief, Desire, Intention)
+Implementation Overview:
+
+Models the agent's mental state through beliefs, desires, and intentions
+Provides a structured approach to goal-oriented reasoning
+Maintains coherent internal state across execution cycles
+
+Key Components:
+
+Beliefs: The agent's knowledge about the world
+Desires: The agent's goals or objectives
+Intentions: Specific plans the agent commits to achieve its desires
+Actions: Selected tools or operations to execute intentions
+
+Use Cases:
+
+Complex goal planning with multiple subgoals
+Tasks requiring a consistent mental model
+Scenarios where prioritizing among multiple objectives is important
+
+3. LAT (Language Agent Tree Search)
+Implementation Overview:
+
+Explores multiple solution paths through tree search algorithms
+Uses simulation and backpropagation to evaluate options
+Employs reflection and learning to improve decision-making
+
+Key Components:
+
+Decision Tree Creation: Builds a tree of possible solution paths
+Node Selection: Chooses which path to explore next
+Simulation: Evaluates potential outcomes of a selected path
+Backpropagation: Updates previous nodes based on simulation results
+Path Selection: Selects the optimal solution path
+
+Use Cases:
+
+Problems with multiple possible solutions
+Tasks requiring exploration of different strategies
+Decision-making with long-term consequences
+
+4. RAISE (Reasoning and Acting Through Scratch Pad and Examples)
+Implementation Overview:
+
+Uses a scratch pad to maintain working memory and track reasoning
+Leverages examples to guide problem-solving
+Combines internal reasoning with external tool usage
+
+Key Components:
+
+Scratch Pad: Working memory that records all reasoning steps
+Examples Retrieval: Finds relevant examples to guide reasoning
+Thought Generation: Produces reasoning based on context and examples
+Tool Usage: Interacts with external systems when needed
+Memory Editing: Updates the scratch pad with new information
+
+Use Cases:
+
+Tasks requiring detailed step-by-step reasoning
+Learning from examples or demonstrations
+Problems where tracking the reasoning process is important
+
+5. ReWOO (Reasoning Without Observation)
+Implementation Overview:
+
+Focuses on pure reasoning without external observations
+Distributes subtasks among multiple workers
+Integrates worker results to form a comprehensive solution
+
+Key Components:
+
+Planner: Creates a plan with subtasks for workers
+Workers: Solve assigned subtasks through pure reasoning
+Solver: Integrates worker results into a coherent solution
+
+Use Cases:
+
+Pure reasoning tasks without need for external data
+Problems that can be decomposed into independent subtasks
+Tasks where deep thinking is more important than external interaction
+
+Comparison and Selection Guidelines
+When choosing an agent architecture for your task:
+
+Choose OODA when dealing with dynamic environments or when continuous reassessment is required
+Choose BDI for complex goal-oriented tasks with multiple objectives or when maintaining a consistent mental model is important
+Choose LAT when exploring multiple solution paths would be beneficial or when decisions have long-term consequences that need simulation
+Choose RAISE when detailed step-by-step reasoning needs to be tracked or when learning from examples is important
+Choose ReWOO for pure reasoning tasks without external data needs or when parallel processing of subtasks would be efficient
+
+Each architecture in the Harkaam framework is implemented as a separate agent class that inherits from the BaseAgent, making it easy to swap architectures or combine them in multi-agent workflows.
